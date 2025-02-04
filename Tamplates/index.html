@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Titanic Survival Predictor</h1>
+        <form method="POST">
+            <label>Pclass:</label>
+            <input type="number" name="Pclass" required value="{{ input_values.get('Pclass', '') }}">
+
+            <label>Sex:</label>
+            <input type="text" name="Sex" required value="{{ input_values.get('Sex', '') }}">
+
+            <label>Age:</label>
+            <input type="number" step="0.1" name="Age" required value="{{ input_values.get('Age', '') }}">
+
+            <label>SibSp:</label>
+            <input type="number" name="SibSp" required value="{{ input_values.get('SibSp', '') }}">
+
+            <label>Parch:</label>
+            <input type="number" name="Parch" required value="{{ input_values.get('Parch', '') }}">
+
+            <label>Fare:</label>
+            <input type="number" step="0.01" name="Fare" required value="{{ input_values.get('Fare', '') }}">
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h2>Prediction: {{ prediction }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
